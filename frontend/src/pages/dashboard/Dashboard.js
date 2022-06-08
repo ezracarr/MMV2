@@ -36,7 +36,7 @@ const Dashboard = () => {
       <h1 className='page-title'>
         Welcome, {currentUser.firstName}! <br />
         <small>
-          <small>Your role is {currentUser.role}</small>
+          <small>Your roley is {currentUser.role}</small>
         </small>
       </h1>
       <Grid container alignItems='center' columns={12} spacing={1}>

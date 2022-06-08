@@ -1,3 +1,4 @@
+require ('custom-env').env('dev')
 module.exports = {
   production: {
     dialect: 'mysql',
@@ -16,7 +17,7 @@ module.exports = {
   development: {
     username: 'root',
     dialect: 'mysql',
-    password: '',
+    password: process.env.DB_PASS,
     database: 'db_meetupmarket',
     host: process.env.DEV_DB_HOST || 'localhost',
     logging: console.log,

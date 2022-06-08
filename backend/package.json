@@ -12,6 +12,7 @@
     "@google-cloud/storage": "^5.18.2",
     "bcrypt": "5.0.0",
     "cors": "2.8.5",
+    "custom-env": "^2.0.1",
     "express": "4.17.1",
     "formidable": "1.2.2",
     "helmet": "4.1.1",
