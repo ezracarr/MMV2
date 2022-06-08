@@ -67,7 +67,7 @@ import s from './am4chartMap.module.scss';
   render() {
     return (
       <div className={s.mapChart}>
-        <div className={s.stats}>
+        {/* <div className={s.stats}>
           <h6 className="mt-1">GEO-LOCATIONS</h6>
           <p className="h3 m-0">
             <span className="mr-xs fw-normal">
@@ -80,7 +80,7 @@ import s from './am4chartMap.module.scss';
               /></span>
             <i className="fa fa-map-marker" />
           </p>
-        </div>
+        </div> */}
         <div className={s.map} id="map">
           <span>Alternative content for the map</span>
         </div>

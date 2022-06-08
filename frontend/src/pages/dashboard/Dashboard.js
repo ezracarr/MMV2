@@ -66,7 +66,7 @@ class Dashboard extends React.Component {
       <div className={s.root}>
         <h1 className="page-title">Dashboard &nbsp;
           <small>
-            <small>The Lucky One</small>
+            <small>Meetup Market</small>
           </small>
         </h1>
 
@@ -78,7 +78,7 @@ class Dashboard extends React.Component {
           </Col>
           <Col lg={1} />
 
-          <Col lg={4}>
+        {/* <Col lg={4}>
             <Widget
               className="bg-transparent"
               title={<h5> Map
@@ -141,7 +141,7 @@ class Dashboard extends React.Component {
               </div>
 
             </Widget>
-          </Col>
+          </Col> 
 
         </Row>
 
@@ -358,15 +358,15 @@ class Dashboard extends React.Component {
                 </Table>
               </div>
 
-              {/* <div className="widget-body mt-xlg chart-overflow-bottom" style={{ height: '100px' }}>
+              <div className="widget-body mt-xlg chart-overflow-bottom" style={{ height: '100px' }}>
                 <Rickshaw height={100} />
-              </div> */}
+              </div> 
 
             </Widget>
           </Col>
 
           <Col lg={4} xs={12}>
-            {/* <Widget title={<h6>Calendar</h6>} settings close bodyClass={"pt-2 px-0 py-0"}>
+            <Widget title={<h6>Calendar</h6>} settings close bodyClass={"pt-2 px-0 py-0"}>
               <Calendar />
               <div className="list-group fs-mini">
                 <button className="list-group-item text-ellipsis">
@@ -378,10 +378,10 @@ class Dashboard extends React.Component {
                   Stop world water pollution
                 </button>
               </div>
-            </Widget> */}
+            </Widget> 
           </Col>
-
-        </Row>
+*/}
+        </Row> 
 
       </div>
     );
