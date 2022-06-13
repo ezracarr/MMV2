@@ -41,7 +41,7 @@ const actions = {
       dispatch({
         type: 'NODES_FORM_CREATE_STARTED',
       });
-
+      console.log("here3")
       axios.post('/nodes', { data: values }).then((res) => {
         dispatch({
           type: 'NODES_FORM_CREATE_SUCCESS',
@@ -49,7 +49,9 @@ const actions = {
         showSnackbar({ type: 'success', message: 'Nodes created' });
         dispatch(push('/admin/nodes'));
       });
+      console.log("here5")
     } catch (error) {
+      console.log("here4")
       Errors.handle(error);
 
       dispatch({

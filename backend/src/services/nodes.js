@@ -1,8 +1,11 @@
 const db = require('../db/models');
 const NodesDBApi = require('../db/api/nodes');
+const { createNode } = require('./voltage/createNode');
 
 module.exports = class NodesService {
   static async create(data, currentUser) {
+    console.log("HERE1")
+    await createNode()
     const transaction = await db.sequelize.transaction();
     try {
       await NodesDBApi.create(data, {
@@ -16,6 +19,7 @@ module.exports = class NodesService {
       throw error;
     }
   }
+
   static async update(data, id, currentUser) {
     const transaction = await db.sequelize.transaction();
     try {

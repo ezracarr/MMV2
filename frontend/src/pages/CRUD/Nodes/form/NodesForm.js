@@ -48,6 +48,7 @@ const NodesForm = (props) => {
 
   const handleSubmit = (values) => {
     const { id, ...data } = PreparedValues(nodesFields, values || {});
+    console.log("here2")
     onSubmit(id, data);
   };
 
