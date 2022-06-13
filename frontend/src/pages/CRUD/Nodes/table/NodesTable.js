@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import * as dataFormat from 'pages/CRUD/Nodes/table/NodesDataFormatters';
-
+import * as meetupsDataFormat from 'pages/CRUD/Meetups/table/MeetupsDataFormatters';
 import actions from 'actions/nodes/nodesListActions';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -56,6 +56,7 @@ const NodesTable = () => {
 
   const [filters, setFilters] = React.useState([
     { label: 'Macaroon', title: 'macaroon' },
+    { label: 'Meetup', title: 'meetup' },
   ]);
 
   const [filterItems, setFilterItems] = React.useState([]);
@@ -190,6 +191,20 @@ const NodesTable = () => {
       flex: 0.6,
 
       headerName: 'Macaroon',
+    },
+    {
+      field: 'meetup',
+
+      sortable: false,
+      renderCell: (params) =>
+        meetupsDataFormat.listFormatter(
+          params.row[params.field],
+          history,
+          'meetups',
+        ),
+      flex: 1,
+
+      headerName: 'Meetup',
     },
 
     {

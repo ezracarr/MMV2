@@ -10,7 +10,7 @@ import {
 
 import Widget from '../../components/Widget';
 
-// import Calendar from './components/calendar/Calendar';
+import Calendar from './components/calendar/Calendar';
 import Map from './components/am4chartMap/am4chartMap';
 // import Rickshaw from './components/rickshaw/Rickshaw';
 
@@ -74,6 +74,9 @@ class Dashboard extends React.Component {
           <Col lg={7}>
             <Widget className="bg-transparent">
               <Map />
+            </Widget>
+            <Widget className="bg-transparent">
+              <Calendar />
             </Widget>
           </Col>
           <Col lg={1} />

@@ -24,6 +24,7 @@ import IniValues from 'components/FormItems/iniValues';
 import PreparedValues from 'components/FormItems/preparedValues';
 import FormValidations from 'components/FormItems/formValidations';
 import Widget from 'components/Widget';
+import MeetupsSelectItem from 'pages/CRUD/Meetups/helpers/MeetupsSelectItem';
 
 const NodesForm = (props) => {
   const {
@@ -73,6 +74,14 @@ const NodesForm = (props) => {
                   name={'macaroon'}
                   schema={nodesFields}
                   autoFocus
+                />
+              </Grid>
+              <Grid item>
+                <MeetupsSelectItem
+                  name={'meetup'}
+                  schema={nodesFields}
+                  showCreate={!modal}
+                  form={form}
                 />
               </Grid>
             </Grid>

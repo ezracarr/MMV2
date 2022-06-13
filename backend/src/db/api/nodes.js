@@ -23,8 +23,14 @@ module.exports = class NodesDBApi {
       { transaction },
     );
 
+    await nodes.setMeetup(data.meetup || null, {
+      transaction,
+    });
+
     return nodes;
   }
+
+  
 
   static async update(id, data, options) {
     const currentUser = (options && options.currentUser) || { id: null };
@@ -41,6 +47,10 @@ module.exports = class NodesDBApi {
       },
       { transaction },
     );
+
+    await nodes.setMeetup(data.meetup || null, {
+      transaction,
+    });
 
     return nodes;
   }
@@ -78,6 +88,10 @@ module.exports = class NodesDBApi {
 
     const output = nodes.get({ plain: true });
 
+    output.meetup = await nodes.getMeetup({
+      transaction,
+    });
+
     return output;
   }
 
@@ -92,7 +106,12 @@ module.exports = class NodesDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.meetups,
+        as: 'meetup',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
@@ -118,6 +137,17 @@ module.exports = class NodesDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.meetup) {
+        var listItems = filter.meetup.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          meetupId: { [Op.or]: listItems },
         };
       }
 

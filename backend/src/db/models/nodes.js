@@ -32,6 +32,11 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   nodes.associate = (db) => {
+    db.nodes.belongsTo(db.meetups, {
+      as: 'meetup',
+      constraints: false,
+    });
+
     db.nodes.belongsTo(db.users, {
       as: 'createdBy',
     });
