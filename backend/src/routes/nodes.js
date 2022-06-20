@@ -17,6 +17,19 @@ const router = express.Router();
  *          macaroon:
  *            type: string
  *            default: macaroon
+ *          api_endpoint:
+ *            type: string
+ *            default: api_endpoint
+ *          node_name:
+ *            type: string
+ *            default: node_name
+ *          node_id:
+ *            type: string
+ *            default: node_id
+
+ *          type:
+ *            type: integer
+ *            format: int64
 
  */
 

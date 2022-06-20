@@ -156,15 +156,6 @@ function Sidebar({ location, structure }) {
         />
 
         <SidebarLink
-          label='Channels'
-          link='/admin/channels'
-          location={location}
-          isSidebarOpened={isSidebarOpenedWrapper}
-          icon={<CoreIcon />}
-          toggleDrawer={toggleDrawer(true)}
-        />
-
-        <SidebarLink
           label='Events'
           link='/admin/events'
           location={location}

@@ -25,6 +25,10 @@ import PreparedValues from 'components/FormItems/preparedValues';
 import FormValidations from 'components/FormItems/formValidations';
 import Widget from 'components/Widget';
 
+import MeetupsSelectItem from 'pages/CRUD/Meetups/helpers/MeetupsSelectItem';
+
+import ProductsSelectItem from 'pages/CRUD/Products/helpers/ProductsSelectItem';
+
 const PaymentsForm = (props) => {
   const {
     isEditing,
@@ -78,6 +82,43 @@ const PaymentsForm = (props) => {
 
               <Grid item>
                 <InputFormItem name={'payee'} schema={paymentsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'amount'} schema={paymentsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'amount_sats'} schema={paymentsFields} />
+              </Grid>
+
+              <Grid item>
+                <MeetupsSelectItem
+                  name={'meetup_to'}
+                  schema={paymentsFields}
+                  showCreate={!modal}
+                  multiple
+                  form={form}
+                />
+              </Grid>
+
+              <Grid item>
+                <MeetupsSelectItem
+                  name={'meetup_from'}
+                  schema={paymentsFields}
+                  showCreate={!modal}
+                  form={form}
+                />
+              </Grid>
+
+              <Grid item>
+                <ProductsSelectItem
+                  name={'product'}
+                  schema={paymentsFields}
+                  showCreate={!modal}
+                  multiple
+                  form={form}
+                />
               </Grid>
             </Grid>
             <Grid container spacing={3} mt={2}>

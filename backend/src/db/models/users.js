@@ -74,6 +74,18 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
+      alias: {
+        type: DataTypes.TEXT,
+      },
+
+      type: {
+        type: DataTypes.INTEGER,
+      },
+
+      category: {
+        type: DataTypes.INTEGER,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,

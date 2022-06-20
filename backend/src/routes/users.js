@@ -26,6 +26,16 @@ const router = express.Router();
  *          email:
  *            type: string
  *            default: email
+ *          alias:
+ *            type: string
+ *            default: alias
+
+ *          type:
+ *            type: integer
+ *            format: int64
+ *          category:
+ *            type: integer
+ *            format: int64
 
  *          
  *          role:

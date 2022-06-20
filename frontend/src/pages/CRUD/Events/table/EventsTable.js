@@ -60,6 +60,10 @@ const EventsTable = () => {
   const [filters, setFilters] = React.useState([
     { label: 'Name', title: 'name' },
     { label: 'Description', title: 'description' },
+    { label: 'Location', title: 'location' },
+    { label: 'Lat', title: 'lat' },
+    { label: 'Lng', title: 'lng' },
+    { label: 'City', title: 'city' },
 
     { label: 'Meetup', title: 'meetup' },
   ]);
@@ -227,6 +231,38 @@ const EventsTable = () => {
       flex: 1,
 
       headerName: 'Meetup',
+    },
+
+    {
+      field: 'location',
+
+      flex: 0.6,
+
+      headerName: 'Location',
+    },
+
+    {
+      field: 'lat',
+
+      flex: 0.6,
+
+      headerName: 'Lat',
+    },
+
+    {
+      field: 'lng',
+
+      flex: 0.6,
+
+      headerName: 'Lng',
+    },
+
+    {
+      field: 'city',
+
+      flex: 0.6,
+
+      headerName: 'City',
     },
 
     {

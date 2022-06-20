@@ -18,6 +18,22 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
+      api_endpoint: {
+        type: DataTypes.TEXT,
+      },
+
+      type: {
+        type: DataTypes.INTEGER,
+      },
+
+      node_name: {
+        type: DataTypes.TEXT,
+      },
+
+      node_id: {
+        type: DataTypes.TEXT,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -32,6 +48,11 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   nodes.associate = (db) => {
+    db.nodes.belongsTo(db.meetups, {
+      as: 'Meetup',
+      constraints: false,
+    });
+
     db.nodes.belongsTo(db.users, {
       as: 'createdBy',
     });

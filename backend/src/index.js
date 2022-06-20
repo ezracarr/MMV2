@@ -24,8 +24,6 @@ const productsRoutes = require('./routes/products');
 
 const paymentsRoutes = require('./routes/payments');
 
-const channelsRoutes = require('./routes/channels');
-
 const eventsRoutes = require('./routes/events');
 
 const options = {
@@ -113,12 +111,6 @@ app.use(
   '/api/payments',
   passport.authenticate('jwt', { session: false }),
   paymentsRoutes,
-);
-
-app.use(
-  '/api/channels',
-  passport.authenticate('jwt', { session: false }),
-  channelsRoutes,
 );
 
 app.use(

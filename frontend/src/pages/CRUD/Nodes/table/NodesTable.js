@@ -1,6 +1,9 @@
 // eslint-disable-next-line
 import * as dataFormat from 'pages/CRUD/Nodes/table/NodesDataFormatters';
 
+// eslint-disable-next-line
+import * as meetupsDataFormat from 'pages/CRUD/Meetups/table/MeetupsDataFormatters';
+
 import actions from 'actions/nodes/nodesListActions';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -56,6 +59,12 @@ const NodesTable = () => {
 
   const [filters, setFilters] = React.useState([
     { label: 'Macaroon', title: 'macaroon' },
+    { label: 'Api Endpoint', title: 'api_endpoint' },
+    { label: 'Node Name', title: 'node_name' },
+    { label: 'Node Id', title: 'node_id' },
+    { label: 'Type', title: 'type', number: 'true' },
+
+    { label: 'Meetup', title: 'Meetup' },
   ]);
 
   const [filterItems, setFilterItems] = React.useState([]);
@@ -190,6 +199,53 @@ const NodesTable = () => {
       flex: 0.6,
 
       headerName: 'Macaroon',
+    },
+
+    {
+      field: 'api_endpoint',
+
+      flex: 0.6,
+
+      headerName: 'Api Endpoint',
+    },
+
+    {
+      field: 'type',
+
+      flex: 0.6,
+
+      headerName: 'Type',
+    },
+
+    {
+      field: 'Meetup',
+
+      sortable: false,
+      renderCell: (params) =>
+        meetupsDataFormat.listFormatter(
+          params.row[params.field],
+          history,
+          'meetups',
+        ),
+      flex: 1,
+
+      headerName: 'Meetup',
+    },
+
+    {
+      field: 'node_name',
+
+      flex: 0.6,
+
+      headerName: 'Node Name',
+    },
+
+    {
+      field: 'node_id',
+
+      flex: 0.6,
+
+      headerName: 'Node Id',
     },
 
     {

@@ -26,6 +26,22 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
+      location: {
+        type: DataTypes.TEXT,
+      },
+
+      lat: {
+        type: DataTypes.TEXT,
+      },
+
+      lng: {
+        type: DataTypes.TEXT,
+      },
+
+      city: {
+        type: DataTypes.TEXT,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,

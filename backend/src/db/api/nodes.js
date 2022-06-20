@@ -16,12 +16,20 @@ module.exports = class NodesDBApi {
         id: data.id || undefined,
 
         macaroon: data.macaroon || null,
+        api_endpoint: data.api_endpoint || null,
+        type: data.type || null,
+        node_name: data.node_name || null,
+        node_id: data.node_id || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await nodes.setMeetup(data.Meetup || null, {
+      transaction,
+    });
 
     return nodes;
   }
@@ -37,10 +45,18 @@ module.exports = class NodesDBApi {
     await nodes.update(
       {
         macaroon: data.macaroon || null,
+        api_endpoint: data.api_endpoint || null,
+        type: data.type || null,
+        node_name: data.node_name || null,
+        node_id: data.node_id || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await nodes.setMeetup(data.Meetup || null, {
+      transaction,
+    });
 
     return nodes;
   }
@@ -78,6 +94,10 @@ module.exports = class NodesDBApi {
 
     const output = nodes.get({ plain: true });
 
+    output.Meetup = await nodes.getMeetup({
+      transaction,
+    });
+
     return output;
   }
 
@@ -92,7 +112,12 @@ module.exports = class NodesDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.meetups,
+        as: 'Meetup',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
@@ -109,6 +134,51 @@ module.exports = class NodesDBApi {
         };
       }
 
+      if (filter.api_endpoint) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('nodes', 'api_endpoint', filter.api_endpoint),
+        };
+      }
+
+      if (filter.node_name) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('nodes', 'node_name', filter.node_name),
+        };
+      }
+
+      if (filter.node_id) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('nodes', 'node_id', filter.node_id),
+        };
+      }
+
+      if (filter.typeRange) {
+        const [start, end] = filter.typeRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            type: {
+              ...where.type,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            type: {
+              ...where.type,
+              [Op.lte]: end,
+            },
+          };
+        }
+      }
+
       if (
         filter.active === true ||
         filter.active === 'true' ||
@@ -118,6 +188,17 @@ module.exports = class NodesDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.Meetup) {
+        var listItems = filter.Meetup.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          MeetupId: { [Op.or]: listItems },
         };
       }
 

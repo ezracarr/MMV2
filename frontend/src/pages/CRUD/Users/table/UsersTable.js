@@ -62,6 +62,9 @@ const UsersTable = () => {
     { label: 'Last Name', title: 'lastName' },
     { label: 'Phone Number', title: 'phoneNumber' },
     { label: 'E-Mail', title: 'email' },
+    { label: 'Alias', title: 'alias' },
+    { label: 'Type', title: 'type', number: 'true' },
+    { label: 'Category', title: 'category', number: 'true' },
   ]);
 
   const [filterItems, setFilterItems] = React.useState([]);
@@ -258,6 +261,30 @@ const UsersTable = () => {
       flex: 1,
 
       headerName: 'Meetups',
+    },
+
+    {
+      field: 'alias',
+
+      flex: 0.6,
+
+      headerName: 'Alias',
+    },
+
+    {
+      field: 'type',
+
+      flex: 0.6,
+
+      headerName: 'Type',
+    },
+
+    {
+      field: 'category',
+
+      flex: 0.6,
+
+      headerName: 'Category',
     },
 
     {

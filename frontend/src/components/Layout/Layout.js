@@ -43,9 +43,6 @@ import ProductsTablePage from 'pages/CRUD/Products/table/ProductsTablePage';
 import PaymentsFormPage from 'pages/CRUD/Payments/form/PaymentsFormPage';
 import PaymentsTablePage from 'pages/CRUD/Payments/table/PaymentsTablePage';
 
-import ChannelsFormPage from 'pages/CRUD/Channels/form/ChannelsFormPage';
-import ChannelsTablePage from 'pages/CRUD/Channels/table/ChannelsTablePage';
-
 import EventsFormPage from 'pages/CRUD/Events/form/EventsFormPage';
 import EventsTablePage from 'pages/CRUD/Events/table/EventsTablePage';
 
@@ -146,18 +143,6 @@ function Layout(props) {
             path={'/admin/payments/:id/edit'}
             exact
             component={PaymentsFormPage}
-          />
-
-          <Route path={'/admin/channels'} exact component={ChannelsTablePage} />
-          <Route
-            path={'/admin/channels/new'}
-            exact
-            component={ChannelsFormPage}
-          />
-          <Route
-            path={'/admin/channels/:id/edit'}
-            exact
-            component={ChannelsFormPage}
           />
 
           <Route path={'/admin/events'} exact component={EventsTablePage} />

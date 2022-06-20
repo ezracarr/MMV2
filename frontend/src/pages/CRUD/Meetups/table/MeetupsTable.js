@@ -1,6 +1,13 @@
 // eslint-disable-next-line
 import * as dataFormat from 'pages/CRUD/Meetups/table/MeetupsDataFormatters';
 
+// eslint-disable-next-line
+import * as usersDataFormat from 'pages/CRUD/Users/table/UsersDataFormatters';
+// eslint-disable-next-line
+import * as productsDataFormat from 'pages/CRUD/Products/table/ProductsDataFormatters';
+// eslint-disable-next-line
+import * as nodesDataFormat from 'pages/CRUD/Nodes/table/NodesDataFormatters';
+
 import actions from 'actions/meetups/meetupsListActions';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -60,6 +67,14 @@ const MeetupsTable = () => {
     { label: 'Lat', title: 'lat' },
     { label: 'Long', title: 'long' },
     { label: 'Has Node', title: 'hasNode' },
+    { label: 'Website', title: 'website' },
+    { label: 'City', title: 'city' },
+    { label: 'Link 1', title: 'link1' },
+    { label: 'Link 2', title: 'link2' },
+    { label: 'Link 3', title: 'link3' },
+    { label: 'Link 4', title: 'link4' },
+    { label: 'Type', title: 'type', number: 'true' },
+    { label: 'Category', title: 'category', number: 'true' },
   ]);
 
   const [filterItems, setFilterItems] = React.useState([]);
@@ -226,6 +241,115 @@ const MeetupsTable = () => {
       flex: 0.6,
 
       headerName: 'Has Node',
+    },
+
+    {
+      field: 'type',
+
+      flex: 0.6,
+
+      headerName: 'Type',
+    },
+
+    {
+      field: 'category',
+
+      flex: 0.6,
+
+      headerName: 'Category',
+    },
+
+    {
+      field: 'website',
+
+      flex: 0.6,
+
+      headerName: 'Website',
+    },
+
+    {
+      field: 'city',
+
+      flex: 0.6,
+
+      headerName: 'City',
+    },
+
+    {
+      field: 'link1',
+
+      flex: 0.6,
+
+      headerName: 'Link 1',
+    },
+
+    {
+      field: 'link2',
+
+      flex: 0.6,
+
+      headerName: 'Link 2',
+    },
+
+    {
+      field: 'link3',
+
+      flex: 0.6,
+
+      headerName: 'Link 3',
+    },
+
+    {
+      field: 'link4',
+
+      flex: 0.6,
+
+      headerName: 'Link 4',
+    },
+
+    {
+      field: 'user',
+
+      sortable: false,
+      renderCell: (params) =>
+        usersDataFormat.listFormatter(
+          params.row[params.field],
+          history,
+          'users',
+        ),
+      flex: 1,
+
+      headerName: 'User',
+    },
+
+    {
+      field: 'products',
+
+      sortable: false,
+      renderCell: (params) =>
+        productsDataFormat.listFormatter(
+          params.row[params.field],
+          history,
+          'products',
+        ),
+      flex: 1,
+
+      headerName: 'Products',
+    },
+
+    {
+      field: 'nodes',
+
+      sortable: false,
+      renderCell: (params) =>
+        nodesDataFormat.listFormatter(
+          params.row[params.field],
+          history,
+          'nodes',
+        ),
+      flex: 1,
+
+      headerName: 'Nodes',
     },
 
     {

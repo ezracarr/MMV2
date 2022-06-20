@@ -21,6 +21,13 @@ const router = express.Router();
  *            type: string
  *            default: payee
 
+ *          amount:
+ *            type: integer
+ *            format: int64
+ *          amount_sats:
+ *            type: integer
+ *            format: int64
+
  */
 
 /**

@@ -25,6 +25,12 @@ import PreparedValues from 'components/FormItems/preparedValues';
 import FormValidations from 'components/FormItems/formValidations';
 import Widget from 'components/Widget';
 
+import UsersSelectItem from 'pages/CRUD/Users/helpers/UsersSelectItem';
+
+import ProductsSelectItem from 'pages/CRUD/Products/helpers/ProductsSelectItem';
+
+import NodesSelectItem from 'pages/CRUD/Nodes/helpers/NodesSelectItem';
+
 const MeetupsForm = (props) => {
   const {
     isEditing,
@@ -86,6 +92,68 @@ const MeetupsForm = (props) => {
 
               <Grid item>
                 <InputFormItem name={'hasNode'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'type'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'category'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'website'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'city'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'link1'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'link2'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'link3'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'link4'} schema={meetupsFields} />
+              </Grid>
+
+              <Grid item>
+                <UsersSelectItem
+                  name={'user'}
+                  schema={meetupsFields}
+                  showCreate={!modal}
+                  multiple
+                  form={form}
+                />
+              </Grid>
+
+              <Grid item>
+                <ProductsSelectItem
+                  name={'products'}
+                  schema={meetupsFields}
+                  showCreate={!modal}
+                  multiple
+                  form={form}
+                />
+              </Grid>
+
+              <Grid item>
+                <NodesSelectItem
+                  name={'nodes'}
+                  schema={meetupsFields}
+                  showCreate={!modal}
+                  multiple
+                  form={form}
+                />
               </Grid>
             </Grid>
             <Grid container spacing={3} mt={2}>
