@@ -24,6 +24,7 @@ import IniValues from 'components/FormItems/iniValues';
 import PreparedValues from 'components/FormItems/preparedValues';
 import FormValidations from 'components/FormItems/formValidations';
 import Widget from 'components/Widget';
+import MeetupsSelectItem from 'pages/CRUD/Meetups/helpers/MeetupsSelectItem';
 
 import MeetupsSelectItem from 'pages/CRUD/Meetups/helpers/MeetupsSelectItem';
 
@@ -49,6 +50,7 @@ const NodesForm = (props) => {
 
   const handleSubmit = (values) => {
     const { id, ...data } = PreparedValues(nodesFields, values || {});
+    console.log("here2")
     onSubmit(id, data);
   };
 

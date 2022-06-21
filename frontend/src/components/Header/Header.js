@@ -135,7 +135,7 @@ export default function Header(props) {
           block
           style={{ display: 'flex', alignItems: 'center', marginLeft: 8 }}
         >
-          <div className={classes.profileLabel}>Hi,&nbsp;</div>
+          {/* <div className={classes.profileLabel}>Hi,&nbsp;</div> */}
           <Typography weight={'bold'} className={classes.profileLabel}>
             {currentUser?.firstName}
           </Typography>
