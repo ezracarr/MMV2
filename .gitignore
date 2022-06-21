@@ -2,3 +2,6 @@ data/
 .env.dev
 node_modules/
 backend/package-lock.json
+/.DS_Store
+.DS_Store/
+frontend/src/.DS_Store
