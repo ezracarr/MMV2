@@ -1,4 +1,4 @@
-require ('custom-env').env('dev')
+require('dotenv').config();
 module.exports = {
   production: {
     dialect: 'mysql',

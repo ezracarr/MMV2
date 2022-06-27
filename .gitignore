@@ -1,5 +1,7 @@
 data/
 backend/.env.dev
+backend/.env
+.env
 node_modules/
 backend/package-lock.json
 /.DS_Store
