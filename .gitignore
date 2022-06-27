@@ -5,3 +5,4 @@ backend/package-lock.json
 /.DS_Store
 .DS_Store/
 frontend/src/.DS_Store
+node_modules
