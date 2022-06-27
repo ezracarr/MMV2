@@ -1,13 +1,9 @@
 // eslint-disable-next-line
 import * as dataFormat from 'pages/CRUD/Nodes/table/NodesDataFormatters';
-<<<<<<< HEAD
 
 // eslint-disable-next-line
 import * as meetupsDataFormat from 'pages/CRUD/Meetups/table/MeetupsDataFormatters';
 
-=======
-import * as meetupsDataFormat from 'pages/CRUD/Meetups/table/MeetupsDataFormatters';
->>>>>>> up_and_running
 import actions from 'actions/nodes/nodesListActions';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -63,16 +59,12 @@ const NodesTable = () => {
 
   const [filters, setFilters] = React.useState([
     { label: 'Macaroon', title: 'macaroon' },
-<<<<<<< HEAD
     { label: 'Api Endpoint', title: 'api_endpoint' },
     { label: 'Node Name', title: 'node_name' },
     { label: 'Node Id', title: 'node_id' },
     { label: 'Type', title: 'type', number: 'true' },
 
     { label: 'Meetup', title: 'Meetup' },
-=======
-    { label: 'Meetup', title: 'meetup' },
->>>>>>> up_and_running
   ]);
 
   const [filterItems, setFilterItems] = React.useState([]);

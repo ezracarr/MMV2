@@ -49,11 +49,7 @@ module.exports = function (sequelize, DataTypes) {
 
   nodes.associate = (db) => {
     db.nodes.belongsTo(db.meetups, {
-<<<<<<< HEAD
       as: 'Meetup',
-=======
-      as: 'meetup',
->>>>>>> up_and_running
       constraints: false,
     });
 

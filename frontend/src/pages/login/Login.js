@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import {
   Grid,
   CircularProgress,
   Tabs,
@@ -92,7 +98,10 @@ function Login(props) {
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
         <img src={logo} alt='logo' className={classes.logotypeImage} />
-        <Typography className={classes.logotypeText}>MeetupMarket</Typography>
+        <Typography className={classes.logotypeText}>
+          <Link to="/dashboard">Meetup Market</Link>
+        </Typography>
+        
       </div>
       <div
         className={

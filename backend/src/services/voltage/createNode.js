@@ -1,10 +1,10 @@
 const axios = require('axios')
 const crypto = require('crypto-js')
-
+require ('custom-env').env('dev')
 // HIDE THIS IN AN ENVIRONMENT VARIABLE BEFORE COMMITTING
-let apiKey = "Checknotes"
-let nodeName = "voltage-example"
-let nodePassword = "Checknotes"
+let apiKey = process.env.VOLTAGE_API_KEY
+let nodeName = `example-${Math.floor(Math.random()*100000)}`
+let nodePassword = process.env.NODE_PASS
 
 async function createNode() {
     console.log("Creating a node...")

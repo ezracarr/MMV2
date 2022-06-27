@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Menu, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material';
+import { Button } from '../../components/Wrappers';
 import {
   Menu as MenuIcon,
   Person as AccountIcon,
@@ -32,8 +33,12 @@ import {
 
 import { actions } from '../../context/ManagementContext';
 import { useUserDispatch, signOut } from '../../context/UserContext';
+import { useUserState } from '../../context/UserContext';
 
 export default function Header(props) {
+  let { isAuthenticated } = useUserState();
+  const isAuth = isAuthenticated();
+
   let classes = useStyles();
   let theme = useTheme();
 
@@ -76,114 +81,133 @@ export default function Header(props) {
     setSmall(isSmallScreen);
   }
 
-  return (
-    <AppBar position='fixed' className={classes.appBar}>
-      <Toolbar className={classes.toolbar}>
-        <IconButton
-          color='inherit'
-          onClick={() => toggleSidebar(layoutDispatch)}
-          className={classNames(
-            classes.headerMenuButton,
-            classes.headerMenuButtonCollapse,
-          )}
-        >
-          {(!layoutState.isSidebarOpened && isSmall) ||
-          (layoutState.isSidebarOpened && !isSmall) ? (
-            <ArrowBackIcon
-              classes={{
-                root: classNames(
-                  classes.headerIcon,
-                  classes.headerIconCollapse,
-                ),
-              }}
-            />
-          ) : (
-            <MenuIcon
-              classes={{
-                root: classNames(
-                  classes.headerIcon,
-                  classes.headerIconCollapse,
-                ),
-              }}
-            />
-          )}
-        </IconButton>
-        <Typography variant='h6' weight='medium' className={classes.logotype}>
-          MeetupMarket
-        </Typography>
-        <div className={classes.grow} />
-        <IconButton
-          aria-haspopup='true'
-          color='inherit'
-          className={classes.headerMenuButton}
-          aria-controls='profile-menu'
-          onClick={(e) => setProfileMenu(e.currentTarget)}
-        >
-          <Avatar
-            alt={currentUser?.firstName}
-            // eslint-disable-next-line no-mixed-operators
-            src={
-              currentUser?.avatar?.length >= 1 &&
-              currentUser?.avatar[currentUser.avatar.length - 1].publicUrl
-            }
-            classes={{ root: classes.headerIcon }}
+  if (!isAuth) {
+    return (
+      <AppBar position='fixed' className={classes.appBar}>
+          <Button
+            className={classes.leftButton}
+            component={Link}
+            variant='contained'
+            color='primary'
+            size='large'
+            to={'/login?tab=0'}
           >
-            {currentUser?.firstName?.[0]}
-          </Avatar>
-        </IconButton>
-        <Typography
-          block
-          style={{ display: 'flex', alignItems: 'center', marginLeft: 8 }}
-        >
-          {/* <div className={classes.profileLabel}>Hi,&nbsp;</div> */}
-          <Typography weight={'bold'} className={classes.profileLabel}>
-            {currentUser?.firstName}
-          </Typography>
-        </Typography>
-        <Menu
-          id='profile-menu'
-          open={Boolean(profileMenu)}
-          anchorEl={profileMenu}
-          onClose={() => setProfileMenu(null)}
-          className={classes.headerMenu}
-          classes={{ paper: classes.profileMenu }}
-          disableAutoFocusItem
-        >
-          <div className={classes.profileMenuUser}>
-            <Typography variant='h4' weight='medium'>
-              {currentUser?.firstName}
-            </Typography>
-            <Typography
-              className={classes.profileMenuLink}
-              component='a'
-              color='primary'
-              href='https://flatlogic.com'
-            >
-              Flatlogic.com
-            </Typography>
-          </div>
-          <MenuItem
+            Login
+          </Button>
+      </AppBar>
+    )
+  } else {
+    return (
+ 
+      <AppBar position='fixed' className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            color='inherit'
+            onClick={() => toggleSidebar(layoutDispatch)}
             className={classNames(
-              classes.profileMenuItem,
-              classes.headerMenuItem,
+              classes.headerMenuButton,
+              classes.headerMenuButtonCollapse,
             )}
           >
-            <AccountIcon className={classes.profileMenuIcon} />
-            <Link to='/admin/user/edit' style={{ textDecoration: 'none' }}>
-              Profile
-            </Link>
-          </MenuItem>
-          <div className={classes.profileMenuUser}>
-            <Typography
-              className={classes.profileMenuLink}
-              color='primary'
-              onClick={() => signOut(userDispatch, props.history)}
+            {(!layoutState.isSidebarOpened && isSmall) ||
+            (layoutState.isSidebarOpened && !isSmall) ? (
+              <ArrowBackIcon
+                classes={{
+                  root: classNames(
+                    classes.headerIcon,
+                    classes.headerIconCollapse,
+                  ),
+                }}
+              />
+            ) : (
+              <MenuIcon
+                classes={{
+                  root: classNames(
+                    classes.headerIcon,
+                    classes.headerIconCollapse,
+                  ),
+                }}
+              />
+            )}
+          </IconButton>
+          <Typography variant='h6' weight='medium' className={classes.logotype}>
+            MeetupMarket
+          </Typography>
+          <div className={classes.grow} />
+          <IconButton
+            aria-haspopup='true'
+            color='inherit'
+            className={classes.headerMenuButton}
+            aria-controls='profile-menu'
+            onClick={(e) => setProfileMenu(e.currentTarget)}
+          >
+            <Avatar
+              alt={currentUser?.firstName}
+              // eslint-disable-next-line no-mixed-operators
+              src={
+                currentUser?.avatar?.length >= 1 &&
+                currentUser?.avatar[currentUser.avatar.length - 1].publicUrl
+              }
+              classes={{ root: classes.headerIcon }}
             >
-              Sign Out
+              {currentUser?.firstName?.[0]}
+            </Avatar>
+          </IconButton>
+          <Typography
+            block
+            style={{ display: 'flex', alignItems: 'center', marginLeft: 8 }}
+          >
+            {/* <div className={classes.profileLabel}>Hi,&nbsp;</div> */}
+            <Typography weight={'bold'} className={classes.profileLabel}>
+              {currentUser?.firstName}
             </Typography>
-          </div>
-        </Menu>
-      </Toolbar>
-    </AppBar>
-  );
+          </Typography>
+          <Menu
+            id='profile-menu'
+            open={Boolean(profileMenu)}
+            anchorEl={profileMenu}
+            onClose={() => setProfileMenu(null)}
+            className={classes.headerMenu}
+            classes={{ paper: classes.profileMenu }}
+            disableAutoFocusItem
+          >
+            <div className={classes.profileMenuUser}>
+              <Typography variant='h4' weight='medium'>
+                {currentUser?.firstName}
+              </Typography>
+              <Typography
+                className={classes.profileMenuLink}
+                component='a'
+                color='primary'
+                href='https://flatlogic.com'
+              >
+                Flatlogic.com
+              </Typography>
+            </div>
+            <MenuItem
+              className={classNames(
+                classes.profileMenuItem,
+                classes.headerMenuItem,
+              )}
+            >
+              <AccountIcon className={classes.profileMenuIcon} />
+              <Link to='/admin/user/edit' style={{ textDecoration: 'none' }}>
+                Profile
+              </Link>
+            </MenuItem>
+            <div className={classes.profileMenuUser}>
+              <Typography
+                className={classes.profileMenuLink}
+                color='primary'
+                onClick={() => signOut(userDispatch, props.history)}
+              >
+                Sign Out
+              </Typography>
+            </div>
+          </Menu>
+        </Toolbar>
+      </AppBar>
+    ); 
+  }
+ 
 }

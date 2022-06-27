@@ -27,11 +27,7 @@ module.exports = class NodesDBApi {
       { transaction },
     );
 
-<<<<<<< HEAD
     await nodes.setMeetup(data.Meetup || null, {
-=======
-    await nodes.setMeetup(data.meetup || null, {
->>>>>>> up_and_running
       transaction,
     });
 
@@ -60,11 +56,7 @@ module.exports = class NodesDBApi {
       { transaction },
     );
 
-<<<<<<< HEAD
     await nodes.setMeetup(data.Meetup || null, {
-=======
-    await nodes.setMeetup(data.meetup || null, {
->>>>>>> up_and_running
       transaction,
     });
 
@@ -104,11 +96,7 @@ module.exports = class NodesDBApi {
 
     const output = nodes.get({ plain: true });
 
-<<<<<<< HEAD
     output.Meetup = await nodes.getMeetup({
-=======
-    output.meetup = await nodes.getMeetup({
->>>>>>> up_and_running
       transaction,
     });
 
@@ -129,11 +117,7 @@ module.exports = class NodesDBApi {
     let include = [
       {
         model: db.meetups,
-<<<<<<< HEAD
         as: 'Meetup',
-=======
-        as: 'meetup',
->>>>>>> up_and_running
       },
     ];
 
@@ -209,23 +193,14 @@ module.exports = class NodesDBApi {
         };
       }
 
-<<<<<<< HEAD
       if (filter.Meetup) {
         var listItems = filter.Meetup.split('|').map((item) => {
-=======
-      if (filter.meetup) {
-        var listItems = filter.meetup.split('|').map((item) => {
->>>>>>> up_and_running
           return Utils.uuid(item);
         });
 
         where = {
           ...where,
-<<<<<<< HEAD
           MeetupId: { [Op.or]: listItems },
-=======
-          meetupId: { [Op.or]: listItems },
->>>>>>> up_and_running
         };
       }
 

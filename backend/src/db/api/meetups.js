@@ -412,6 +412,7 @@ module.exports = class MeetupsDBApi {
     return records.map((record) => ({
       id: record.id,
       label: record.id,
+      displayLabel: record.name
     }));
   }
 };

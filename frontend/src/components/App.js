@@ -6,6 +6,7 @@ import { Close as CloseIcon } from '@mui/icons-material';
 import useStyles from './styles';
 // components
 import Layout from './Layout';
+import NoAuthLayout from './NoAuthLayout';
 import Documentation from './Documentation/Documentation';
 
 // pages
@@ -27,38 +28,59 @@ export default function App() {
   function CloseButton({ closeToast, className }) {
     return <CloseIcon className={className} onClick={closeToast} />;
   }
+  if (isAuth) {
+    return (
+      <>
+        <SnackbarProvider>
+          <ConnectedRouter history={getHistory()}>
+            <Router history={getHistory()}>
+              <Switch>
+                <Route
+                  exact
+                  path='/'
+                  render={() => <Redirect to='/admin/dashboard' />}
+                />
+                <Route
+                  exact
+                  path='/admin'
+                  render={() => <Redirect to='/admin/dashboard' />}
+                />
+                <Route path='/documentation' component={Documentation} />
+                <PrivateRoute path='/admin' component={Layout} />
+                <Redirect from='*' to='/admin/dashboard' />
+                <Route component={Error} />
+              </Switch>
+            </Router>
+          </ConnectedRouter>
+        </SnackbarProvider>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <SnackbarProvider>
+          <ConnectedRouter history={getHistory()}>
+            <Router history={getHistory()}>
+              <Switch>
+                <Route
+                  exact
+                  path='/'
+                  render={() => <Redirect to='/dashboard' />}
+                />
+                <PublicRoute path='/dashboard' component={NoAuthLayout} />
+                <PublicRoute path='/login' component={Login} />
+                <PublicRoute path='/verify-email' exact component={Verify} />
+                <PublicRoute path='/password-reset' exact component={Reset} />
+                <Redirect from='*' to='/dashboard' />
+                <Route component={Error} />
+              </Switch>
+            </Router>
+          </ConnectedRouter>
+        </SnackbarProvider>
+      </>
+    );
+  }
 
-  return (
-    <>
-      <SnackbarProvider>
-        <ConnectedRouter history={getHistory()}>
-          <Router history={getHistory()}>
-            <Switch>
-              <Route
-                exact
-                path='/'
-                render={() => <Redirect to='/admin/dashboard' />}
-              />
-
-              <Route
-                exact
-                path='/admin'
-                render={() => <Redirect to='/admin/dashboard' />}
-              />
-              <Route path='/documentation' component={Documentation} />
-              <PrivateRoute path='/admin' component={Layout} />
-              <PublicRoute path='/starter' component={Starter} />
-              <PublicRoute path='/login' component={Login} />
-              <PublicRoute path='/verify-email' exact component={Verify} />
-              <PublicRoute path='/password-reset' exact component={Reset} />
-              <Redirect from='*' to='/admin/dashboard' />
-              <Route component={Error} />
-            </Switch>
-          </Router>
-        </ConnectedRouter>
-      </SnackbarProvider>
-    </>
-  );
 
   // #######################################################################
 
@@ -67,11 +89,12 @@ export default function App() {
       <Route
         {...rest}
         render={(props) =>
-          isAuth ? (
-            React.createElement(component, props)
-          ) : (
-            <Redirect to={'/starter'} />
-          )
+          React.createElement(component, props)
+          // isAuth ? (
+          //   React.createElement(component, props)
+          // ) : (
+          //   <Redirect to={'/starter'} />
+          // )
         }
       />
     );
