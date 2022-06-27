@@ -18,6 +18,10 @@ module.exports = class EventsDBApi {
         date: data.date || null,
         name: data.name || null,
         description: data.description || null,
+        location: data.location || null,
+        lat: data.lat || null,
+        lng: data.lng || null,
+        city: data.city || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -45,6 +49,10 @@ module.exports = class EventsDBApi {
         date: data.date || null,
         name: data.name || null,
         description: data.description || null,
+        location: data.location || null,
+        lat: data.lat || null,
+        lng: data.lng || null,
+        city: data.city || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -134,6 +142,34 @@ module.exports = class EventsDBApi {
         where = {
           ...where,
           [Op.and]: Utils.ilike('events', 'description', filter.description),
+        };
+      }
+
+      if (filter.location) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('events', 'location', filter.location),
+        };
+      }
+
+      if (filter.lat) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('events', 'lat', filter.lat),
+        };
+      }
+
+      if (filter.lng) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('events', 'lng', filter.lng),
+        };
+      }
+
+      if (filter.city) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('events', 'city', filter.city),
         };
       }
 

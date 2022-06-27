@@ -50,6 +50,27 @@ const usersFields = {
 
     options: [{ value: 'value', label: 'value' }],
   },
+
+  alias: {
+    type: 'string',
+    label: 'Alias',
+
+    options: [{ value: 'value', label: 'value' }],
+  },
+
+  type: {
+    type: 'int',
+    label: 'Type',
+
+    options: [{ value: 'value', label: 'value' }],
+  },
+
+  category: {
+    type: 'int',
+    label: 'Category',
+
+    options: [],
+  },
 };
 
 export default usersFields;

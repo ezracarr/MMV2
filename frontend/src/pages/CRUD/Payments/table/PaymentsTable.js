@@ -1,6 +1,11 @@
 // eslint-disable-next-line
 import * as dataFormat from 'pages/CRUD/Payments/table/PaymentsDataFormatters';
 
+// eslint-disable-next-line
+import * as meetupsDataFormat from 'pages/CRUD/Meetups/table/MeetupsDataFormatters';
+// eslint-disable-next-line
+import * as productsDataFormat from 'pages/CRUD/Products/table/ProductsDataFormatters';
+
 import actions from 'actions/payments/paymentsListActions';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -57,6 +62,10 @@ const PaymentsTable = () => {
   const [filters, setFilters] = React.useState([
     { label: 'Payer', title: 'payer' },
     { label: 'Payee', title: 'payee' },
+    { label: 'Amount', title: 'amount', number: 'true' },
+    { label: 'Amount Sats', title: 'amount_sats', number: 'true' },
+
+    { label: 'Meetup From', title: 'meetup_from' },
   ]);
 
   const [filterItems, setFilterItems] = React.useState([]);
@@ -199,6 +208,67 @@ const PaymentsTable = () => {
       flex: 0.6,
 
       headerName: 'Payee',
+    },
+
+    {
+      field: 'amount',
+
+      flex: 0.6,
+
+      headerName: 'Amount',
+    },
+
+    {
+      field: 'amount_sats',
+
+      flex: 0.6,
+
+      headerName: 'Amount Sats',
+    },
+
+    {
+      field: 'meetup_to',
+
+      sortable: false,
+      renderCell: (params) =>
+        meetupsDataFormat.listFormatter(
+          params.row[params.field],
+          history,
+          'meetups',
+        ),
+      flex: 1,
+
+      headerName: 'Meetup To',
+    },
+
+    {
+      field: 'meetup_from',
+
+      sortable: false,
+      renderCell: (params) =>
+        meetupsDataFormat.listFormatter(
+          params.row[params.field],
+          history,
+          'meetups',
+        ),
+      flex: 1,
+
+      headerName: 'Meetup From',
+    },
+
+    {
+      field: 'product',
+
+      sortable: false,
+      renderCell: (params) =>
+        productsDataFormat.listFormatter(
+          params.row[params.field],
+          history,
+          'products',
+        ),
+      flex: 1,
+
+      headerName: 'Product',
     },
 
     {

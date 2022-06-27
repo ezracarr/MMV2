@@ -29,6 +29,31 @@ const router = express.Router();
  *          hasNode:
  *            type: string
  *            default: hasNode
+ *          website:
+ *            type: string
+ *            default: website
+ *          city:
+ *            type: string
+ *            default: city
+ *          link1:
+ *            type: string
+ *            default: link1
+ *          link2:
+ *            type: string
+ *            default: link2
+ *          link3:
+ *            type: string
+ *            default: link3
+ *          link4:
+ *            type: string
+ *            default: link4
+
+ *          type:
+ *            type: integer
+ *            format: int64
+ *          category:
+ *            type: integer
+ *            format: int64
 
  */
 

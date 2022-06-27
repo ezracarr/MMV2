@@ -12,8 +12,6 @@ import products from 'reducers/products/productsReducers';
 
 import payments from 'reducers/payments/paymentsReducers';
 
-import channels from 'reducers/channels/channelsReducers';
-
 import events from 'reducers/events/eventsReducers';
 
 export default (history) =>
@@ -30,8 +28,6 @@ export default (history) =>
     products,
 
     payments,
-
-    channels,
 
     events,
   });

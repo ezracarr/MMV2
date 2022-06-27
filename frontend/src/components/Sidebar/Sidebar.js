@@ -147,23 +147,14 @@ function Sidebar({ location, structure }) {
         />
 
         <SidebarLink
-          label='Payments'
-          link='/admin/payments'
+          label='Events'
+          link='/admin/events'
           location={location}
           isSidebarOpened={isSidebarOpenedWrapper}
           icon={<CoreIcon />}
           toggleDrawer={toggleDrawer(true)}
         />
-
-        <SidebarLink
-          label='Channels'
-          link='/admin/channels'
-          location={location}
-          isSidebarOpened={isSidebarOpenedWrapper}
-          icon={<CoreIcon />}
-          toggleDrawer={toggleDrawer(true)}
-        />
-
+{/* 
         <SidebarLink
           label='Events'
           link='/admin/events'
@@ -172,7 +163,6 @@ function Sidebar({ location, structure }) {
           icon={<CoreIcon />}
           toggleDrawer={toggleDrawer(true)}
         />
-
         <SidebarLink
           label='Documentation'
           link='/documentation'
@@ -223,7 +213,7 @@ function Sidebar({ location, structure }) {
           isSidebarOpened={isSidebarOpenedWrapper}
           icon={<DocumentationIcon />}
           toggleDrawer={toggleDrawer(true)}
-        />
+        /> */}
       </List>
     </Drawer>
   );

@@ -94,6 +94,22 @@ const EventsForm = (props) => {
                   form={form}
                 />
               </Grid>
+
+              <Grid item>
+                <InputFormItem name={'location'} schema={eventsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'lat'} schema={eventsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'lng'} schema={eventsFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'city'} schema={eventsFields} />
+              </Grid>
             </Grid>
             <Grid container spacing={3} mt={2}>
               <Grid item>

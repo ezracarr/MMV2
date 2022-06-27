@@ -34,6 +34,38 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
+      type: {
+        type: DataTypes.INTEGER,
+      },
+
+      category: {
+        type: DataTypes.INTEGER,
+      },
+
+      website: {
+        type: DataTypes.TEXT,
+      },
+
+      city: {
+        type: DataTypes.TEXT,
+      },
+
+      link1: {
+        type: DataTypes.TEXT,
+      },
+
+      link2: {
+        type: DataTypes.TEXT,
+      },
+
+      link3: {
+        type: DataTypes.TEXT,
+      },
+
+      link4: {
+        type: DataTypes.TEXT,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -48,6 +80,24 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   meetups.associate = (db) => {
+    db.meetups.belongsToMany(db.users, {
+      as: 'user',
+      constraints: false,
+      through: 'meetupsUserUsers',
+    });
+
+    db.meetups.belongsToMany(db.products, {
+      as: 'products',
+      constraints: false,
+      through: 'meetupsProductsProducts',
+    });
+
+    db.meetups.belongsToMany(db.nodes, {
+      as: 'nodes',
+      constraints: false,
+      through: 'meetupsNodesNodes',
+    });
+
     db.meetups.belongsTo(db.users, {
       as: 'createdBy',
     });

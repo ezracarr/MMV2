@@ -24,6 +24,7 @@ import IniValues from 'components/FormItems/iniValues';
 import PreparedValues from 'components/FormItems/preparedValues';
 import FormValidations from 'components/FormItems/formValidations';
 import Widget from 'components/Widget';
+import MeetupsSelectItem from 'pages/CRUD/Meetups/helpers/MeetupsSelectItem';
 
 const NodesForm = (props) => {
   const {
@@ -74,6 +75,31 @@ const NodesForm = (props) => {
                   schema={nodesFields}
                   autoFocus
                 />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'api_endpoint'} schema={nodesFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'type'} schema={nodesFields} />
+              </Grid>
+
+              <Grid item>
+                <MeetupsSelectItem
+                  name={'Meetup'}
+                  schema={nodesFields}
+                  showCreate={!modal}
+                  form={form}
+                />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'node_name'} schema={nodesFields} />
+              </Grid>
+
+              <Grid item>
+                <InputFormItem name={'node_id'} schema={nodesFields} />
               </Grid>
             </Grid>
             <Grid container spacing={3} mt={2}>

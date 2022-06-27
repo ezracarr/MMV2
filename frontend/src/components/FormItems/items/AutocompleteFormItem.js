@@ -16,7 +16,7 @@ export default function MultipleSelectChip({
   items,
 }) {
   const theme = useTheme();
-  const { label } = schema[name];
+  const { label, displayLabel } = schema[name];
 
   const selected = useMemo(() => {
     if (form.values[name]) {
@@ -51,7 +51,7 @@ export default function MultipleSelectChip({
           }
         }}
         renderInput={(params) => (
-          <TextField {...params} label={label} placeholder={label} />
+          <TextField {...params} label={label} displayLabel={displayLabel} placeholder={label} />
         )}
         ListboxProps={{
           style: {

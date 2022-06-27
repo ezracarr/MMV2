@@ -28,6 +28,34 @@ const eventsFields = {
 
     options: [{ value: 'value', label: 'value' }],
   },
+
+  location: {
+    type: 'string',
+    label: 'Location',
+
+    options: [{ value: 'value', label: 'value' }],
+  },
+
+  lat: {
+    type: 'string',
+    label: 'Lat',
+
+    options: [{ value: 'value', label: 'value' }],
+  },
+
+  lng: {
+    type: 'string',
+    label: 'Lng',
+
+    options: [{ value: 'value', label: 'value' }],
+  },
+
+  city: {
+    type: 'string',
+    label: 'City',
+
+    options: [{ value: 'value', label: 'value' }],
+  },
 };
 
 export default eventsFields;

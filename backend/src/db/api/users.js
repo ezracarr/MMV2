@@ -36,6 +36,9 @@ module.exports = class UsersDBApi {
         passwordResetTokenExpiresAt:
           data.data.passwordResetTokenExpiresAt || null,
         provider: data.data.provider || null,
+        alias: data.data.alias || null,
+        type: data.data.type || null,
+        category: data.data.category || null,
         importHash: data.data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -93,6 +96,9 @@ module.exports = class UsersDBApi {
         passwordResetToken: data.passwordResetToken || null,
         passwordResetTokenExpiresAt: data.passwordResetTokenExpiresAt || null,
         provider: data.provider || null,
+        alias: data.alias || null,
+        type: data.type || null,
+        category: data.category || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -264,6 +270,13 @@ module.exports = class UsersDBApi {
         };
       }
 
+      if (filter.alias) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('users', 'alias', filter.alias),
+        };
+      }
+
       if (filter.emailVerificationTokenExpiresAtRange) {
         const [start, end] = filter.emailVerificationTokenExpiresAtRange;
 
@@ -306,6 +319,54 @@ module.exports = class UsersDBApi {
             ...where,
             passwordResetTokenExpiresAt: {
               ...where.passwordResetTokenExpiresAt,
+              [Op.lte]: end,
+            },
+          };
+        }
+      }
+
+      if (filter.typeRange) {
+        const [start, end] = filter.typeRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            type: {
+              ...where.type,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            type: {
+              ...where.type,
+              [Op.lte]: end,
+            },
+          };
+        }
+      }
+
+      if (filter.categoryRange) {
+        const [start, end] = filter.categoryRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            category: {
+              ...where.category,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            category: {
+              ...where.category,
               [Op.lte]: end,
             },
           };

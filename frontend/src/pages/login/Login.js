@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import {
   Grid,
   CircularProgress,
   Tabs,
@@ -92,7 +98,10 @@ function Login(props) {
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
         <img src={logo} alt='logo' className={classes.logotypeImage} />
-        <Typography className={classes.logotypeText}>MeetupMarket</Typography>
+        <Typography className={classes.logotypeText}>
+          <Link to="/dashboard">Meetup Market</Link>
+        </Typography>
+        
       </div>
       <div
         className={
@@ -157,7 +166,7 @@ function Login(props) {
               </Tabs>
               {activeTabId === 0 && (
                 <React.Fragment>
-                  {config.isBackend ? (
+                  {/* {config.isBackend ? (
                     <Widget
                       disableWidgetMenu
                       inheritHeight
@@ -178,7 +187,7 @@ function Login(props) {
                   ) : null}
                   <Typography variant='h1' className={classes.greeting}>
                     {getGreeting()}, User
-                  </Typography>
+                  </Typography> */}
                   <Button
                     size='large'
                     className={classes.googleButton}
@@ -412,7 +421,7 @@ function Login(props) {
             </>
           )}
         </div>
-        <Typography color='primary' className={classes.copyright}>
+        {/* <Typography color='primary' className={classes.copyright}>
           2014-{new Date().getFullYear()}{' '}
           <a
             style={{ textDecoration: 'none', color: 'inherit' }}
@@ -423,7 +432,7 @@ function Login(props) {
             Flatlogic
           </a>
           , LLC. All rights reserved.
-        </Typography>
+        </Typography> */}
       </div>
     </Grid>
   );

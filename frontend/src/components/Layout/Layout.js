@@ -43,11 +43,9 @@ import ProductsTablePage from 'pages/CRUD/Products/table/ProductsTablePage';
 import PaymentsFormPage from 'pages/CRUD/Payments/form/PaymentsFormPage';
 import PaymentsTablePage from 'pages/CRUD/Payments/table/PaymentsTablePage';
 
-import ChannelsFormPage from 'pages/CRUD/Channels/form/ChannelsFormPage';
-import ChannelsTablePage from 'pages/CRUD/Channels/table/ChannelsTablePage';
-
 import EventsFormPage from 'pages/CRUD/Events/form/EventsFormPage';
 import EventsTablePage from 'pages/CRUD/Events/table/EventsTablePage';
+// import { useUserState } from '../../context/UserContext';
 
 const Redirect = (props) => {
   useEffect(() => window.location.replace(props.url));
@@ -80,7 +78,7 @@ function Layout(props) {
         <BreadCrumbs />
         <Switch>
           <Route path='/admin/dashboard' component={Dashboard} />
-          <Route path='/admin/user/edit' component={EditUser} />
+         <Route path='/admin/user/edit' component={EditUser} />
           <Route
             path={'/admin/api-docs'}
             exact
@@ -95,14 +93,9 @@ function Layout(props) {
               />
             )}
           />
-
           <Route path={'/admin/users'} exact component={UsersTablePage} />
           <Route path={'/admin/users/new'} exact component={UsersFormPage} />
-          <Route
-            path={'/admin/users/:id/edit'}
-            exact
-            component={UsersFormPage}
-          />
+
 
           <Route path={'/admin/meetups'} exact component={MeetupsTablePage} />
           <Route
@@ -148,18 +141,6 @@ function Layout(props) {
             component={PaymentsFormPage}
           />
 
-          <Route path={'/admin/channels'} exact component={ChannelsTablePage} />
-          <Route
-            path={'/admin/channels/new'}
-            exact
-            component={ChannelsFormPage}
-          />
-          <Route
-            path={'/admin/channels/:id/edit'}
-            exact
-            component={ChannelsFormPage}
-          />
-
           <Route path={'/admin/events'} exact component={EventsTablePage} />
           <Route path={'/admin/events/new'} exact component={EventsFormPage} />
           <Route
@@ -179,7 +160,7 @@ function Layout(props) {
         </Fab>
         <ColorChangeThemePopper id={id} open={open} anchorEl={anchorEl} />
         <Footer>
-          <div>
+          {/* <div>
             <Link
               color={'primary'}
               href={'https://flatlogic.com/'}
@@ -224,7 +205,7 @@ function Layout(props) {
                 <GithubIcon style={{ color: '#6E6E6E99' }} />
               </IconButton>
             </Link>
-          </div>
+          </div> */}
         </Footer>
       </div>
     </div>

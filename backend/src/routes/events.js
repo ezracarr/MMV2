@@ -20,6 +20,18 @@ const router = express.Router();
  *          description:
  *            type: string
  *            default: description
+ *          location:
+ *            type: string
+ *            default: location
+ *          lat:
+ *            type: string
+ *            default: lat
+ *          lng:
+ *            type: string
+ *            default: lng
+ *          city:
+ *            type: string
+ *            default: city
 
  */
 
