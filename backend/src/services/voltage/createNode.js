@@ -1,6 +1,6 @@
 const axios = require('axios')
 const crypto = require('crypto-js')
-require ('custom-env').env('dev')
+require('dotenv').config();
 // HIDE THIS IN AN ENVIRONMENT VARIABLE BEFORE COMMITTING
 let apiKey = process.env.VOLTAGE_API_KEY
 let nodeName = `example-${Math.floor(Math.random()*100000)}`
